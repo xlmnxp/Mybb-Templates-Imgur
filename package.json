@@ -1,0 +1,18 @@
+{
+  "name": "convert-to-imgur",
+  "version": "1.0.0",
+  "description": "A minimal replace template application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "package": "electron-packager . --platform win32 --arch ia32 --version-string.CompanyName \"xlmnxp\" --overwrite"
+  },
+  "keywords": [
+    "template","to","imgur"
+  ],
+  "author": "xlmnxp",
+  "homepage": "http://www.runbb.net/",
+  "devDependencies": {
+    "electron-prebuilt": "^1.2.7"
+  }
+}

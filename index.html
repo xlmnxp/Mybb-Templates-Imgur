@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>converter</title>
+  <link rel="stylesheet" href="css/ionicons.min.css" />
+  <link rel="stylesheet" href="css/index.css" />
+</head>
+  <body>
+    <div class="converter" id="viewer">
+    </div>
+    <i class='ion-checkmark-circled'></i>&nbsp;<a id="num_suc"></a>&nbsp;<i class='ion-close-circled'></i>&nbsp;<a id="num_err"></a>&nbsp;
+    <div class="images_input">
+      <a>images dir </a> <input type="text" id="images_dir" value="images"/><button class="btn" onclick="getallformxml();" type="button" name="button"> <i class="ion ion-refresh"></i> Save & Refresh</button>
+    </div>
+    <button class="btn" onclick="uploadall(this);" type="button" name="button"> <i class="ion ion-play"></i> Start upload</button>
+    <br/>
+    <div class="image-selected">
+      <center><img id="image" src="images/no_preview.png" onError="this.src = 'images/no_preview.png';" /></center>
+    </div>
+  </body>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/index.js"></script>
+</html>

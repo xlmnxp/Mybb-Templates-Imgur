@@ -1,0 +1,152 @@
+@font-face {
+    font-family: "Economica-bold";
+    src: url(../fonts/Economica-Bold.ttf);
+}
+@font-face {
+    font-family: "Economica-Regular";
+    src: url(../fonts/Economica-Regular.ttf);
+}
+
+*{
+  font-family: "Economica-bold";
+  cursor: default;
+  -webkit-user-select: none;
+}
+.ion-checkmark-circled{
+    color:lightgreen;
+}
+.ion-close-circled{
+    color:#ff6666;
+}
+
+.find_file{
+  margin: 1px;
+  padding: 3px;
+  transition: 0.15s all;
+  cursor: pointer;
+}
+
+.find_file:hover{
+  outline-width: 3px;
+  outline-color: #80ccff;
+  outline-style: solid;
+  z-index: 500;
+}
+
+.find_yes{
+  background: green;
+  color: white;
+}
+.find_no{
+  background: red;
+  color: white;
+}
+.image-selected{
+  border: 3px solid transparent;
+  border-radius: 3px;
+  padding: 12px;
+  width: 20vh;
+  height: 20vh;
+  background-color: #ddd;
+}
+.image-selected img{
+  width: 100%;
+  max-width: 100%;
+}
+.tooltip {
+    position: relative;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    index-z:50000;
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1000;
+    top: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #555 transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+.tooltip .tooltiptext img{
+  width: 2.5vh;
+  height: auto;
+}
+
+.btn{
+    height: 23px;
+    width: auto;
+    font-weight: bold;
+    background: rgba(30, 130, 0, 0.8);
+    border: 0px solid;
+    display: inline-block;
+    color: white;
+    padding: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    outline-width: 0px;
+    margin: 2px;
+    cursor: pointer;
+    transition: 0.05s all;
+}
+.btn:hover{
+  background: rgba(30, 130, 0, 1);
+  outline-style: solid;
+  outline-color: darkgreen;
+  outline-width: 1px;
+}
+.btn:active{
+  outline-color: darkgray;
+  background: gray;
+}
+.btn:disabled{
+  outline-style: solid;
+  outline-width: 1px;
+  outline-color: darkgray;
+  background: gray;
+  cursor: default;
+}
+.images_input{
+  float:right;
+}
+
+.converter{
+  width: 100%;
+  height: 400px;
+  overflow: auto;
+  outline-style: solid;
+  outline-width: 3px;
+  outline-color: #ddd;
+  border: 1px solid gray;
+  background: darkslategray;
+  margin-bottom: 3px;
+}
+button{
+  padding: 13px;
+}
+.ion-ios-cloud-upload{
+  font-size: 23px;
+}
