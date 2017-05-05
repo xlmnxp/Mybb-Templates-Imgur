@@ -12,12 +12,14 @@
     </div>
     <i class='ion-checkmark-circled'></i>&nbsp;<a id="num_suc"></a>&nbsp;<i class='ion-close-circled'></i>&nbsp;<a id="num_err"></a>&nbsp;
     <div class="images_input">
-      <a><i class="ion ion-folder"></i> images dir </a> <input type="text" id="images_dir" value="images"/><button class="btn" onclick="getallformxml();" type="button" name="button"> <i class="ion ion-refresh"></i> Save & Refresh</button>
+      <div><a><i class="ion ion-folder"></i> images dir </a> <input type="text" id="images_dir" value="images"/><button class="btn" onclick="getallformxml();" type="button" name="button"> <i class="ion ion-refresh"></i> Save & Refresh</button></div>
+      <br/>
+      <div><a><i class="ion ion-images"></i> remaining (<a style="color: gray;">Seconds</a>):</a> <a style="color: gray;"><span id="remaining">0</span></a></div>
     </div>
     <button class="btn" onclick="uploadall(this);" type="button" name="button"> <i class="ion ion-play"></i> Start upload</button>
     <br/>
     <div class="image-selected">
-      <center><img id="image" src="images/no_preview.png" onError="this.src = 'images/no_preview.png';" /></center>
+      <center><img id="image" src="imgs/no_preview.png" onError="this.src = 'imgs/no_preview.png';" /></center>
     </div>
   </body>
   <script src="js/jquery.min.js"></script>

@@ -9,6 +9,7 @@ const {Menu, MenuItem} = remote;
 
 
 imgur.setClientId('93a1112090423a2');
+imgur.setAPIUrl('https://api.imgur.com/3/');
 
 String.prototype.replaceall = function(search, replacement) {
   var target = this;
@@ -17,33 +18,44 @@ String.prototype.replaceall = function(search, replacement) {
 
 function uploadall(_this){
   $(_this).attr('disabled','disabled');
-  i = 0;
+  if(images_url.length == 0){
+    $(_this).removeAttr('disabled');
+  }
+
+  var i = 0,j = 0;
   $.each( images_url , function( key, value ) {
-    imgur.uploadFile(value)
-        .then(function (json) {
-            i = i + 1;
-            //alert(json.data.link);
-            $("#num_"+i+" progress").attr('value','2');
-            $("#image").attr("src",value);
-            $.each(all_images,function (k,v) {
-              if(v["url"] == value){
-                full_data = full_data.replaceall(v["regex"],(v["regex"].replaceall(v["url"],json.data.link)));
-              }
+    setTimeout(function (){
+        imgur.uploadFile(value)
+            .then(function (json) {
+                i = i + 1;
+                //alert(json.data.link);
+                $("#num_"+i+" progress").attr('value','2');
+                $("#image").attr("src",value);
+                $.each(all_images,function (k,v) {
+                  if(v["url"] == value){
+                    full_data = full_data.replaceall(v["regex"],(v["regex"].replaceall(v["url"],json.data.link)));
+                  }
+                });
+                if(images_url.length === i){
+                  $(_this).removeAttr('disabled');
+                  fs.writeFile('out_template.xml', full_data, 'utf8', function (err) {
+                    alert("Errors: "+err+";"+(!err ? " Out File: out_template.xml":""));
+                  });
+
+                }
+            })
+            .catch(function (err) {
+                alert(err.message);
             });
-
-            if(images_url.length === i){
-              $(_this).removeAttr('disabled');
-
-              fs.writeFile('out_template.xml', full_data, 'utf8', function (err) {
-                alert("Errors: "+err+";"+(!err ? " Out-File: out_template.xml;":""));
-              });
-
-            }
-        })
-        .catch(function (err) {
-            alert(err.message);
-        });
+    },15000*(j+1));    
+    j++;
   });
+  $("#remaining").html(''+(15*(j)));
+  setInterval(function(){
+    if (parseInt($("#remaining").html()) > 0){
+            $("#remaining").html(parseInt($("#remaining").html())-1);
+    }
+  },1000);
 }
 
 
