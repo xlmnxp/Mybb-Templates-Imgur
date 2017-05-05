@@ -23,7 +23,7 @@
   margin: 1px;
   padding: 3px;
   transition: 0.15s all;
-  cursor: pointer;
+  cursor: default;
 }
 
 .find_file:hover{
