@@ -27,9 +27,7 @@
 }
 
 .find_file:hover{
-  outline-width: 3px;
-  outline-color: #80ccff;
-  outline-style: solid;
+  opacity: 0.8;
   z-index: 500;
 }
 
@@ -141,7 +139,6 @@
   outline-width: 3px;
   outline-color: #ddd;
   border: 1px solid gray;
-  background: darkslategray;
   margin-bottom: 3px;
 }
 button{
