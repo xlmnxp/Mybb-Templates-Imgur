@@ -142,9 +142,11 @@
   margin-bottom: 3px;
 }
 
-button{
-  padding: 13px;
-}
 .ion-ios-cloud-upload{
   font-size: 23px;
+}
+
+input{
+  padding: 2px;
+  margin: 2px;
 }
