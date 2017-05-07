@@ -2,19 +2,38 @@ const http = require('http');
 const fs = require('fs');
 const electron = require('electron');
 // Module to control application life.
-const {app,globalShortcut,ipcMain,dialog} = electron;
+const {app,globalShortcut,ipcMain,dialog,Menu} = electron;
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow;
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
+const template = [
+  {
+    role: 'help',
+    submenu: [
+      {
+        role: 'about',
+        click () { 
+          dialog.showMessageBox({ message: 
+          "الأصدار: 0.0.2\n"+
+          "بواسطة: xlmnxp\n"+
+          "للمزيد من المعلومات قم بزيارت المنتدى التالي\n"+
+          "http://www.mofaker.ga/vb/"
+          ,type:"info" })
+         }
+      }
+    ]
+  }
+]
 
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({});
-  mainWindow.setMenu(null);
-
+  const menu = Menu.buildFromTemplate(template);
+  Menu.setApplicationMenu(menu);
+  mainWindow.setMenu(menu);
   mainWindow.loadURL(`file://${__dirname}/index.html`);
   // mainWindow.webContents.openDevTools()
 
