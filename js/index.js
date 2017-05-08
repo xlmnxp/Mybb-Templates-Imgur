@@ -2,10 +2,11 @@ const imgur = require('imgur');
 var images_url = []
   , image_id   = []
   , all_images = []
-  , full_data;
+  , full_data,
+    temp_data;
 const fs = require("fs");
 const {clipboard, remote} = require('electron');
-const {Menu, MenuItem} = remote;
+const {Menu, MenuItem, dialog} = remote;
 
 
 imgur.setClientId('93a1112090423a2');
@@ -39,13 +40,20 @@ function uploadall(_this){
                 if(images_url.length === i){
                   $(_this).removeAttr('disabled');
                   fs.writeFile('out_template.xml', full_data, 'utf8', function (err) {
-                    alert("Errors: "+err+";"+(!err ? " Out File: out_template.xml":""));
+                    if(err){
+                        dialog.showErrorBox("Error",err);
+                    }else{
+                        dialog.showMessageBox({ message:"Out File: out_template.xml",type:"info",buttons:['ok'] });
+                    }
+                    $(_this).removeAttr('disabled');
                   });
-
+                    
                 }
             })
             .catch(function (err) {
-                alert(err.message);
+                dialog.showErrorBox("Error",err.message);
+                $("#remaining").html(parseInt(0));
+                $(_this).removeAttr('disabled');
             });
     },15000*(j+1));    
     j++;
@@ -72,11 +80,13 @@ function searchinfile(file) {
     qualities = [];
 
     while (matches = qualityRegex.exec(file)) {
+        console.dir(matches);
         qualities.push({"regex":decodeURIComponent(matches[0]),"url":decodeURIComponent(matches[1])});
     }
     var _qualityRegex = /(src|background)( ?= ?)("|')?([^"^'^#^ ^>]+?|\/\?)(\.png|\.gif|\.jpg|\?|\?)([^"^'^>^#^ ]+)?(\3|#| |>)/igm;
 
     while (matches = _qualityRegex.exec(file)) {
+        console.dir(matches);
         qualities.push({"regex":decodeURIComponent(matches[0]),"url":decodeURIComponent(matches[4]+matches[5])});
     }
     return qualities;
@@ -94,7 +104,9 @@ function getallformxml() {
       return alert(err);
     }
     full_data = data;
-    all_images = searchinfile(full_data.replaceall("{$theme['imgdir']}",$("#images_dir").val()));
+    temp_data = full_data.replaceall("{$image_path}",$("#images_dir").val());
+    temp_data = temp_data.replaceall("{$theme['imgdir']}",$("#images_dir").val());
+    all_images = searchinfile(temp_data);
     $.each(all_images,function(key,value){
         fs.exists(value["url"], function(exists) {
           if( $.inArray(value["url"], __datatemp) < 0 ){
