@@ -18,51 +18,58 @@ String.prototype.replaceall = function(search, replacement) {
 };
 
 function uploadall(_this){
+  getallformxml();
   $(_this).attr('disabled','disabled');
-  if(images_url.length == 0){
-    $(_this).removeAttr('disabled');
-  }
+  $("#refreshbtn").attr('disabled','disabled');
 
-  var i = 0,j = 0;
-  $.each( images_url , function( key, value ) {
-    setTimeout(function (){
-        imgur.uploadFile(value)
-            .then(function (json) {
-                i = i + 1;
-                //alert(json.data.link);
-                $("#num_"+i+" progress").attr('value','2');
-                $("#image").attr("src",value);
-                $.each(all_images,function (k,v) {
-                  if(v["url"] == value){
-                    full_data = full_data.replaceall(v["regex"],(v["regex"].replaceall(v["url"],json.data.link)));
-                  }
-                });
-                if(images_url.length === i){
-                  $(_this).removeAttr('disabled');
-                  fs.writeFile('out_template.xml', full_data, 'utf8', function (err) {
-                    if(err){
-                        dialog.showErrorBox("Error",err);
-                    }else{
-                        dialog.showMessageBox({ message:"Out File: out_template.xml",type:"info",buttons:['ok'] });
-                    }
-                    $(_this).removeAttr('disabled');
-                  });
-                    
-                }
-            })
-            .catch(function (err) {
-                dialog.showErrorBox("Error",err.message);
-                $("#remaining").html(parseInt(0));
-                $(_this).removeAttr('disabled');
-            });
-    },15000*(j+1));    
-    j++;
-  });
-  $("#remaining").html(''+(15*(j)));
-  setInterval(function(){
-    if (parseInt($("#remaining").html()) > 0){
-            $("#remaining").html(parseInt($("#remaining").html())-1);
+  setTimeout(function(){
+    if(images_url.length == 0){
+      $(_this).removeAttr('disabled');
+      $("#refreshbtn").removeAttr('disabled');
     }
+    var i = 0,j = 0;
+    $.each( images_url , function( key, value ) {
+      setTimeout(function (){
+          imgur.uploadFile(value)
+              .then(function (json) {
+                  i = i + 1;
+                  //alert(json.data.link);
+                  $("#num_"+i+" progress").attr('value','2');
+                  $("#image").attr("src",value);
+                  $.each(all_images,function (k,v) {
+                    if(v["url"] == value){
+                      full_data = full_data.replaceall(v["regex"],(v["regex"].replaceall(v["url"],json.data.link)));
+                    }
+                  });
+                  if(images_url.length === i){
+                    $(_this).removeAttr('disabled');
+                    fs.writeFile('out_template.xml', full_data, 'utf8', function (err) {
+                      if(err){
+                          dialog.showErrorBox("Error",err);
+                      }else{
+                          dialog.showMessageBox({ message:"Out File: out_template.xml",type:"info",buttons:['ok'] });
+                      }
+                      $(_this).removeAttr('disabled');
+                      $("#refreshbtn").removeAttr('disabled');
+                    });
+                      
+                  }
+              })
+              .catch(function (err) {
+                  dialog.showErrorBox("Error",err.message);
+                  $("#remaining").html(parseInt(0));
+                  $(_this).removeAttr('disabled');
+                  $("#refreshbtn").removeAttr('disabled');
+              });
+      },15000*(j+1));    
+      j++;
+    });
+    $("#remaining").html(''+(15*(j)));
+    setInterval(function(){
+      if (parseInt($("#remaining").html()) > 0){
+              $("#remaining").html(parseInt($("#remaining").html())-1);
+      }
+    },1000);
   },1000);
 }
 
