@@ -41,11 +41,13 @@ function uploadall(_this){
   //getallformxml();
   $(_this).attr('disabled','disabled');
   $("#refreshbtn").attr('disabled','disabled');
+  $("#images_dir").attr('disabled','disabled');
 
   setTimeout(function(){
     if(images_url.length == 0){
       $(_this).removeAttr('disabled');
       $("#refreshbtn").removeAttr('disabled');
+      $("#images_dir").removeAttr('disabled');
     }
     var i = 0,j = 0;
     $.each( images_url , function( key, value ) {
@@ -71,6 +73,7 @@ function uploadall(_this){
                       }
                       $(_this).removeAttr('disabled');
                       $("#refreshbtn").removeAttr('disabled');
+                      $("#images_dir").removeAttr('disabled');
                     });
                       
                   }
@@ -80,6 +83,7 @@ function uploadall(_this){
                   $("#remaining").html(parseInt(0));
                   $(_this).removeAttr('disabled');
                   $("#refreshbtn").removeAttr('disabled');
+                  $("#images_dir").removeAttr('disabled');
               });
       },15000*(j+1));    
       j++;
@@ -169,38 +173,37 @@ function func_contextmenu(element){
         clipboard.writeText(value['regex']); 
       }}
   ] }));
-  menu.append(new MenuItem({type: 'separator'}));
-  /*
-  menu.append(new MenuItem({role: 'delete', click() { 
-    switch(self.className){
-      case "find_file find_yes":
-        num_scu--;
-      break;
-      case "find_file find_no":
-        num_err--;
-      break;
-      default:
-        return;
-    }
-    images_url.remove(value["url"]);
-    self.parentElement.removeChild(self);
-  }}));  
 
-  menu.append(new MenuItem({label: 'Delete All', click() { 
-    switch(self.className){
-      case "find_file find_yes":
-        num_scu--;
-      break;
-      case "find_file find_no":
-        num_err--;
-      break;
-      default:
-        return;
-    }
-    images_url.remove(value["url"]);
-    self.parentElement.removeChild(self);
-  }}));  
-  */
+  // menu.append(new MenuItem({type: 'separator'}));
+  // menu.append(new MenuItem({role: 'delete', click() { 
+  //   switch(self.className){
+  //     case "find_file find_yes":
+  //       num_scu--;
+  //     break;
+  //     case "find_file find_no":
+  //       num_err--;
+  //     break;
+  //     default:
+  //       return;
+  //   }
+  //   images_url.remove(value["url"]);
+  //   self.parentElement.removeChild(self);
+  // }}));  
+
+  // menu.append(new MenuItem({label: 'Delete All', click() { 
+  //   switch(self.className){
+  //     case "find_file find_yes":
+  //       num_scu--;
+  //     break;
+  //     case "find_file find_no":
+  //       num_err--;
+  //     break;
+  //     default:
+  //       return;
+  //   }
+  //   images_url.remove(value["url"]);
+  //   self.parentElement.removeChild(self);
+  // }}));
   menu.popup(remote.getCurrentWindow());
 }
 

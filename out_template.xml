@@ -12,7 +12,7 @@
 	</properties>
 	<stylesheets>
 		<stylesheet name="global.css" version="1810"><![CDATA[body {
-	background: url(http://i.imgur.com/9Dq94g4.png) repeat #F7F7F7;
+	background: url(images/mytrade/bodybg.png) repeat #F7F7F7;
 	color: #969696;
 	text-align: center;
 	line-height: 1.4;
@@ -102,7 +102,7 @@ a:hover, a:active {
 	width: 10px;
 	display: inline-block;
 	margin: 0 5px;
-	background: url(http://i.imgur.com/gw7ylEs.png) no-repeat 0 0;
+	background: url(https://i.imgur.com/dBKGpR0.png) no-repeat 0 0;
 }
 
 .subforum_minion {
@@ -770,7 +770,7 @@ div.error p em {
 	padding-left: 24px;
 	display: block;
 	color: #C00;
-	background: url(http://i.imgur.com/Syc1Uwg.png) no-repeat 0;
+	background: url(https://i.imgur.com/lS82pri.png) no-repeat 0;
 }
 
 div.error ul {
@@ -1050,7 +1050,7 @@ div.error ul {
 	padding: 2px 5px;
 	margin: 2px;
 	font-size: 11px;
-	background: #eee url(http://i.imgur.com/IeYuLzA.png) repeat-x;
+	background: #eee url(https://i.imgur.com/FU6vJ6s.png) repeat-x;
 	border: 1px solid #ccc;
 	color: #555;
 }
@@ -1063,7 +1063,7 @@ div.error ul {
 	padding-left: 20px;
 	display: inline-block;
 	height: 16px;
-	background-image: url(http://i.imgur.com/tDQvSr9.png);
+	background-image: url(https://i.imgur.com/i7alRqM.png);
 	background-repeat: no-repeat;
 }
 
@@ -1143,7 +1143,7 @@ a.button:link,
 a.button:hover,
 a.button:visited,
 a.button:active {
-	background: #0f0f0f url(images/tcat.png) repeat-x;
+	background: #0f0f0f url(https://i.imgur.com/Y8nBVb4.png) repeat-x;
 	color: #fff;
 	display: inline-block;
 	padding: 4px 8px;
@@ -1161,7 +1161,7 @@ a.button.small_button {
 a.button span {
 	padding-left: 20px;
 	display: inline-block;
-	background-image: url(http://i.imgur.com/tDQvSr9.png);
+	background-image: url(https://i.imgur.com/i7alRqM.png);
 	background-repeat: no-repeat;
 }
 
@@ -1202,7 +1202,7 @@ a.button.report_user_button span {
 }
 
 .quick_jump {
-	background: url(images/jump.png) no-repeat 0;
+	background: url(https://i.imgur.com/T8vVh9I.png) no-repeat 0;
 	width: 13px;
 	height: 13px;
 	padding-left: 13px; /* amount of padding needed for image to fully show */
@@ -1211,7 +1211,7 @@ a.button.report_user_button span {
 }
 
 .pollbar {
-	background: url(http://i.imgur.com/BVI8yUD.png) top left repeat-x;
+	background: url(https://i.imgur.com/x0xyuYM.png) top left repeat-x;
 	border: 1px solid #3f3f3f;
 	height: 10px;
 }
@@ -1378,7 +1378,7 @@ a.button.report_user_button span {
 	width: 30px;
 	height: 30px;
 	text-indent: -9999px;
-	background: url(http://i.imgur.com/IcPKixW.png) no-repeat 0 0;
+	background: url(https://i.imgur.com/aMQtc9P.png) no-repeat 0 0;
 }
 
 .modal-spinner {
@@ -1390,7 +1390,7 @@ a.button.report_user_button span {
 	left: 50%;
 	margin-right: -32px;
 	margin-top: -32px;
-	background: url(http://i.imgur.com/fp8A8Xa.gif) no-repeat center center;
+	background: url(https://i.imgur.com/zcXxHUi.gif) no-repeat center center;
 	border-radius: 8px;
 }
 
