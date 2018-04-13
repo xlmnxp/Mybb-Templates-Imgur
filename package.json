@@ -18,5 +18,9 @@
   "homepage": "http://www.runbb.net/",
   "devDependencies": {
     "electron-prebuilt": "^1.2.7"
+  },
+  "dependencies": {
+    "electron": "^1.8.4",
+    "imgur": "^0.2.1"
   }
 }
